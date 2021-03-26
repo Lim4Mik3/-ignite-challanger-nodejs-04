@@ -1,0 +1,123 @@
+{
+  "openapi":  "3.0.0",
+  "info": {
+    "title": "Users Documentation",
+    "desciption": "This is an API Users",
+    "version": "1.0.0",
+    "contact": {
+      "email": "leo@rolecoys.com.br"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new User",
+        "description": "Create a new new User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "My username",
+                  "description": "myuseremail@mail.com.br"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "E-mail already used"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "List all users",
+        "description": "List all users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"          
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }    
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "List one specific user",
+        "description": "List one specific user",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"          
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Turn an user as admin",
+        "description": "Turn an user as admin",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"        
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
